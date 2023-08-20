@@ -1,28 +1,19 @@
 # uastest
-this is the solution of problem asked in uas department test. i have tried my best to solve it.
-soo as i am completely new in opencv and doesnt know anything about numpy and opencv libraries in python initially 
-initially i tried to learn basics about opening closing ,saving and performing basic tasks on images in opencv
+# this is the solution of problem asked in uas department test. i have tried my best to solve it.##
+soo as i am completely new in opencv and doesnt know anything about numpy and opencv libraries in python 
+initially i tried to learn basics about opening closing ,saving and performing basic tasks on images in opencv 
 
-
-
-#tried thresholding and template detection
-
-so problem has 4 parts, i initially tried to solve first 2 parts i.e to print clearly distinct burnt and unburnt area and print no of houses in both regions in a list.
-To solve the problem i tried to threshold the whole sample pitcure provided in task document and then i tried template detection which doesnt yield desired result 
-it was not able to detect all the triangles because during thresholding a lot the green area was getting messed up.
-So i thought of applying filters like gauss and blur but thresholding was not giving the desired result.
-so this method failed......
-
-#using haar cascade with help of gui
-soo.. template detection  was failing than i thought of making a haar cascade with help of gui tool by aemin ahmadi, i created a haar cascade to detect red triangles
-then i used roi thresholding by doing some research so basically i created arrays to store uint8 values for color of brown black and green in hsv which was the bg color of image
-then i changed image to hsv and created roi fro green black and brown color and changed them blck/brwn=yellow and green=cyan for better detection of triangles 
-and to distinguish burnt and unburnt area.
 
 [UAS-DTU Round 2 Task First Year1 (2).pdf](https://github.com/Puneet-chauhan01/uastest/files/12385893/UAS-DTU.Round.2.Task.First.Year1.2.pdf)
+this probelem has 5 tasks and i am trying to solve them one by one....
+#soo..i tried to simply create a mask of burnt and unburnt areas chnge them to colours yellow and cyan and then i created another mask on it to extract yellow region
+and performed morphological transformation in the image then i apllied gauss filter to get even smoother masked region for better detection of triangles in it.
+after getting a mask for yellow color i applied graycale and then convert it to binary and thresholded it to detect contours and edges in it. Then i iterate a loop 
+to get detect triangles using polyDP function and store no. of triangle detected in a list but in img 8 it was detecting a very large triangle in edges of cyan regn 
+soooo i searched on how to detect only a specified size(length) of triangles in a region and then i used another loop which basically creates a rectangle over the detected triangle and than compare the its side length with the specified size length which is enough just for the small triangles or houses.
+so i was able do detect triangles the same way in cyan mask too and then i researched to how to apply this code in all the 10 images at once and give me the desired output that is no. of houses in burnt and unburnt area in a list. then i created a loop to open the images one by one apply the code in them.
+so i was able to complete task1 , task 2 and i still researching on how to detect objects of diff color in a region of different color. Probably its not possible using contours or edge detection as they involve grayscaling. It may require a complex mask creating may be i have to create a  mask to change the color all the colored objets inside a specified color region and then bring it in color range of bg to apply color based detection more easily ......
 
-i was able to get a image with much simpler colours than the one provided.
-but it has too many black pixels in brown area which probably got thresholded to black while doing  roi based thresholding so i created a function by doing some research to convert rest of black pixels into yellow and now its able to distinguish burnt and unburnt area much easily i.e was first output asked in q but i am not able to process whole 11 images to get an output for that i will need to do more research moreover the cascader which i prepared is now giving false positives and also not detecting many triangles probably i have to remake another cascader with help of proccessed images which are cyan and yellow which will give accurate result but if you can tell me any other approach to this q plz tell me.
 
-##please tell me if i am doing it right or do i have to change my approach in some other technique or rebuff the thresholding as most of the space in my code is for thresholding only##
+## if you have any suggestions or tips plz tell me ##
 
