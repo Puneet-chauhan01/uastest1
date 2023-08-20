@@ -126,8 +126,8 @@ i tried doing hsv to gray but its not there but hsv 2 bgr and then bgr2 gray is 
 
 
 
-cv2.imshow("Triangles", image)
-cv2.imshow("hsv_image", hsv_image)
+cv2.imshow("Triangles", img)
+cv2.imshow("hsv_image", hsv)
 
 
 cv2.waitKey(0)
