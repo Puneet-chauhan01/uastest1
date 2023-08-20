@@ -72,7 +72,7 @@ result_image += cv2.bitwise_and(yellow_image, yellow_image, mask=(black_mask1 ))
 edges = cv2.Canny(res_img, 50, 150)
 contours, _ = cv2.findContours(edges.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-#TRIANGLE DETECTION WITH HELP FROM CHAT GPT
+#TRIANGLE DETECTION 
 '''triangles = []
 for contour in contours:
     perimeter = cv2.arcLength(contour, True)
