@@ -84,7 +84,7 @@ for filename in image_filenames:
                     tr.append(approx)
 
             
-    cv2.drawContours(result, tr, -1, (0, 255, 0), 2)
+    cv2.drawContours(result, tr, -1, (255, 255, 255), 2)
 
 #####################                                   #######################
 ##################### Detection of houses in unburnt area #######################

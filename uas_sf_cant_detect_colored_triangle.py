@@ -77,7 +77,7 @@ for contour in contours:
         if min <= triangle_width1 <= max and \
             min <= triangle_height1 <= max:
                 tr.append(approx)
-cv2.drawContours(result, tr, -1, (0, 255, 0), 2)
+cv2.drawContours(result, tr, -1, (255, 255, 0), 2)
 #cv2.drawContours(result, triangles, -1, (0, 255, 0), 2)  # Draw triangles on the image
 print("Number of triangles:", len(tr))
 cv2.imshow("TRIANGLE DETECTION ", result)
@@ -102,7 +102,7 @@ for contour1 in contours1:
                  min <= triangle_height <= max:
                  tr1.append(approx1)
 
-cv2.drawContours(result, tr1, -1, (0, 255, 0), 2)
+cv2.drawContours(result, tr1, -1, (0, 255, 255), 2)
 #cv2.drawContours(result, triangles, -1, (0, 255, 0), 2)  # Draw triangles on the image
 print("Number of triangles:", len(tr1))
 cv2.imshow("TRIANGLE DETECTION ", result)
