@@ -6,14 +6,16 @@ initially i tried to learn basics about opening closing ,saving and performing b
 
 [UAS-DTU Round 2 Task First Year1 (2).pdf](https://github.com/Puneet-chauhan01/uastest/files/12385893/UAS-DTU.Round.2.Task.First.Year1.2.pdf)
 this probelem has 5 tasks and i am trying to solve them one by one....
-#soo..i tried to simply create a mask of burnt and unburnt areas chnge them to colours yellow and cyan and then i created another mask on it to extract yellow region
-and performed morphological transformation in the image then i apllied gauss filter to get even smoother masked region for better detection of triangles in it.
-after getting a mask for yellow color i applied graycale and then convert it to binary and thresholded it to detect contours and edges in it. Then i iterate a loop 
-to get detect triangles using polyDP function and store no. of triangle detected in a list but in img 8 it was detecting a very large triangle in edges of cyan regn 
-soooo i searched on how to detect only a specified size(length) of triangles in a region and then i used another loop which basically creates a rectangle over the detected triangle and than compare the its side length with the specified size length which is enough just for the small triangles or houses.
-so i was able do detect triangles the same way in cyan mask too and then i researched to how to apply this code in all the 10 images at once and give me the desired output that is no. of houses in burnt and unburnt area in a list. then i created a loop to open the images one by one apply the code in them.
-so i was able to complete task1 , task 2 and i still researching on how to detect objects of diff color in a region of different color. Probably its not possible using contours or edge detection as they involve grayscaling. It may require a complex mask creating may be i have to create a  mask to change the color all the colored objets inside a specified color region and then bring it in color range of bg to apply color based detection more easily ......
+#soo..i tried to simply create a mask of burnt and unburnt areas chnge them to colours yellow and cyan and then i created mask of read and blue color to detect contors i them i apllied morphological transformation in the masks to reduce noise and detect contours then i iterate a loop anad used polyDP function to identify polygons then i iterate a loop to confirm they are triangle and then create a roi around those triangles and then i iterated another loop to check the centroid pixel value of triangle to be red and than another loop to check if background pixel in the roi yellow or not. this way i detected triangles of specific color inside specific color region in a image.this same method applied to blue triangles and to detect triangles in cyan region.In each successful detection i appended the respective lists of red triangles in ylw region cyan triangle in yellow region and so on blue triangles and displayed the required outputs.
 
-
-## if you have any suggestions or tips plz tell me ##
+1. An output image, for each input image, that clearly shows the difference between the
+burnt grass and green grass, by overlaying 2 unique colors on top of each. The expected
+output for the given sample input is given below
+2. The number of houses on the burnt grass (Hb) and the number of houses on the green
+grass (Hg), saved in a list
+3. The total priority of houses on the burnt grass (Pb) and the total priority of houses on the
+green grass (Pg), saved in a list
+4. A rescue ratio of priority Pr where Pr = Pb/ Pg , saved in a list
+5. A list of the names of the input images , arranges in descending order of their rescue ratio
+(Pr)
 
