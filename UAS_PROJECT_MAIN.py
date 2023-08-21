@@ -21,7 +21,7 @@ for filename in image_filenames:
     lowergrass = np.array([1, 30, 1])   # Lower grass color
     uppergrass = np.array([85, 255, 255])  # upper grass color
 
-# Define the lower and upper bounds for brown color in HSV color space
+# Define the lower and upper bounds for brown color
     burntashes = np.array([5, 50, 5])   # to detect burnt black spots
     burntgrass = np.array([30, 255, 255])  # to detect brown 
 
@@ -96,10 +96,10 @@ for filename in image_filenames:
             # Calculate the number of yellow pixels in the ROI
                 num_yellow_pixels = np.sum(np.logical_and(roi[:, :, 0] == 0, roi[:, :, 1] == 230, roi[:, :, 2] == 230))
             
-            # Check if the number of yellow pixels exceeds a threshold
-                yellow_pixel_threshold = 3  # Adjust as needed
+            
+                yellow_pixel_threshold = 3  
                 if num_yellow_pixels > yellow_pixel_threshold:
-                # Draw a rectangle around the detected triangle
+                
                     cv2.rectangle(result, (x_tri, y_tri), (x_tri + w_tri, y_tri + h_tri), (0, 255, 0), 2)
                     redylw_houses.append(approx)
 
@@ -125,17 +125,15 @@ for filename in image_filenames:
         
         # Check if the centroid pixel value is within the specified region color bounds
             if np.all(np.logical_and(centroid_pixel_value >= lwrd, centroid_pixel_value <= uprd)):
-            # Create a bounding rectangle around the detected red triangle
+            
                 x_tri, y_tri, w_tri, h_tri = cv2.boundingRect(approx1)
             
             # Create an ROI using the bounding rectangle of the detected triangle
                 roi = result[y_tri:y_tri+h_tri, x_tri:x_tri+w_tri]
-            
-            # Calculate the number of yellow pixels in the ROI
+           
                 num_cyan_pixels = np.sum(np.logical_and(roi[:, :, 0] == 230, roi[:, :, 1] == 230, roi[:, :, 2] == 0))
             
-            # Check if the number of yellow pixels exceeds a threshold
-                cyan_pixel_threshold = 3  # Adjust as needed
+                cyan_pixel_threshold = 3  
                 if num_cyan_pixels > cyan_pixel_threshold:
                 # Draw a rectangle around the detected triangle
                     cv2.rectangle(result, (x_tri, y_tri), (x_tri + w_tri, y_tri + h_tri), (0, 255, 255), 2)
@@ -162,16 +160,15 @@ for filename in image_filenames:
         
         # Check if the centroid pixel value is within the specified region color bounds
             if np.all(np.logical_and(centroid_pixel_value >= lwblu, centroid_pixel_value <= upblu)):
-            # Create a bounding rectangle around the detected red triangle
+            
                 x_tri, y_tri, w_tri, h_tri = cv2.boundingRect(approx2)
             
             # Create an ROI using the bounding rectangle of the detected triangle
                 roi = result[y_tri:y_tri+h_tri, x_tri:x_tri+w_tri]
-            # Calculate the number of yellow pixels in the ROI
+        
                 num_cyan_pixels = np.sum(np.logical_and(roi[:, :, 0] == 230, roi[:, :, 1] == 230, roi[:, :, 2] == 0))
             
-            # Check if the number of yellow pixels exceeds a threshold
-                cyan_pixel_threshold = 3  # Adjust as needed
+                cyan_pixel_threshold = 3 
                 if num_cyan_pixels > cyan_pixel_threshold:
                 # Draw a rectangle around the detected triangle
                     cv2.rectangle(result, (x_tri, y_tri), (x_tri + w_tri, y_tri + h_tri), (255, 255, 255), 2)
@@ -198,16 +195,15 @@ for filename in image_filenames:
         
         # Check if the centroid pixel value is within the specified region color bounds
             if np.all(np.logical_and(centroid_pixel_value >= lwblu, centroid_pixel_value <= upblu)):
-            # Create a bounding rectangle around the detected red triangle
+            
                 x_tri, y_tri, w_tri, h_tri = cv2.boundingRect(approx3)
             
             # Create an ROI using the bounding rectangle of the detected triangle
                 roi = result[y_tri:y_tri+h_tri, x_tri:x_tri+w_tri]
-            # Calculate the number of yellow pixels in the ROI
+            
                 num_yellow_pixels = np.sum(np.logical_and(roi[:, :, 0] == 0, roi[:, :, 1] == 230, roi[:, :, 2] == 230))
             
-            # Check if the number of yellow pixels exceeds a threshold
-                yellow_threshold = 3  # Adjust as needed
+                yellow_threshold = 3  
                 if num_yellow_pixels > yellow_threshold:
                 # Draw a rectangle around the detected triangle
                     cv2.rectangle(result, (x_tri, y_tri), (x_tri + w_tri, y_tri + h_tri), (0, 0, 0), 2)
@@ -233,7 +229,7 @@ for filename in image_filenames:
     imglist.sort(reverse=True)
     for pratio, filename in imglist:
         imgoutput.append(filename)
-    cv2.imshow('Detected Red Triangles with Specified Centroid Color', result)
+    cv2.imshow('TASK1 WITH DETECTED TRIANGLES', result)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 print('Priority_ratio',Pratio)
